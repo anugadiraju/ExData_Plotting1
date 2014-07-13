@@ -26,12 +26,6 @@
     
 ##Note that in this dataset missing values are coded as ?.
     
-#library(sqldf)
-
-#feb1 <- read.csv2.sql("household_power_consumption.txt", 
- ##                     sql = "select * from file where Date = '1/2/2007'", eol = "\n")
-
-#print(nrow(feb1))
      
 ##  R just executes the string in the brackets of pipe, literally like in the command prompt.
      
@@ -40,16 +34,8 @@
 ## findstr /B /R ^[1-2]/2/2007 household_power_consumption.txt |more
 
 data <- read.table(pipe('findstr /B /R ^[1-2]/2/2007 household_power_consumption.txt'),header=F, sep=';',na.strings="?") 
-
-print(nrow(data))
  
 colnames(data) <-names(read.table('household_power_consumption.txt', header=TRUE,sep=";",nrows=1))
-
-print(summary(data))
- 
- print(head(data,nrow=10))
-
-print(str(data))
 
 png(filename="./plot1.png")
 
